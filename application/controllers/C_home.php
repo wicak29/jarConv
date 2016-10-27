@@ -154,9 +154,9 @@ class C_home extends CI_Controller
 	{
 		$config = array(
 			'upload_path' => "./uploads/",
-			'allowed_types' => "gif|jpg|png|jpeg|bmp",
+			'allowed_types' => "bmp",
 			'overwrite' => TRUE,
-			'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+			'max_size' => "204800", // Can be set to particular file size , here it is 2 MB(2048 Kb)
 			'max_height' => "2000",
 			'max_width' => "2000"
 		);
@@ -166,10 +166,19 @@ class C_home extends CI_Controller
 		{
 			$data = array('upload_data' => $this->upload->data());
 
-			$img = $this->imagecreatefrombmp("./uploads/".$data['upload_data']['file_name']);
-			imagejpeg($img, "./compressed/compress_".$data['upload_data']['raw_name'].".jpg");
+			$jpg_path = "./compressed/compress_".$data['upload_data']['raw_name'].".jpg";
+			$png_path = "./compressed/compress_".$data['upload_data']['raw_name'].".png";
+			$gif_path = "./compressed/compress_".$data['upload_data']['raw_name'].".gif";
 
-			print_r($data);
+			$img = $this->imagecreatefrombmp("./uploads/".$data['upload_data']['file_name']);
+			imagejpeg($img, $jpg_path);
+			imagepng($img, $png_path);
+			imagegif($img, $gif_path);
+
+			$data['size_jpg'] = number_format((float)filesize($jpg_path)/1024, 2, '.', '');
+			$data['size_png'] = number_format((float)filesize($png_path)/1024, 2, '.', '');
+			$data['size_gif'] = number_format((float)filesize($gif_path)/1024, 2, '.', '');
+			// print_r($data);
 			$this->load->view('upload_sukses',$data);
 		}
 		else
@@ -179,3 +188,6 @@ class C_home extends CI_Controller
 		}
 	}
 }
+
+
+// http://www.codingforums.com/archive/index.php/t-136009.html

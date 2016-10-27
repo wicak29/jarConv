@@ -1,20 +1,79 @@
 <html>
 <head>
-	<title>Upload File Specification</title>
+	<title>Upload Form</title>
+		<meta charset="utf-8">
+	    <title>Documentation - Bootflat</title>
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	    
+	    <!-- site css -->
+	    <link rel="stylesheet" href="<?php echo base_url('assets/bootflat');?>/css/site.min.css ">
+	    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+	    
+	    <script type="text/javascript" src="<?php echo base_url('assets/bootflat');?>/js/site.min.js"></script>
 </head>
-<body>
-	<h2>Your file was successfully uploaded!</h3>
-	<!-- Uploaded file specification will show up here -->
-	<ul>
+<body style="background-color: rgb(241, 242, 246);">
+		<div class="container documents">
+			<div class="example">
+				<div class="row">
+					<h1 style="text-align: center; ">Hasil Konverter</h1>
+					<div class="col-md-3">
+						<div class="jumbotron">
+						  <div class="jumbotron-photo">
+						  	<img src="<?php echo base_url('uploads/'.$upload_data['file_name']); ?>">
+						  </div>
+						  <div class="jumbotron-contents">
+						    <h2>BMP (Original)</h2>
+						    <p><?php echo $upload_data['file_size']; ?> KB</p>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="jumbotron">
+						  <div class="jumbotron-photo">
+						  	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.jpg'); ?>">
+						  </div>
+						  <div class="jumbotron-contents">
+						    <h2>JPG</h2>
+						    <p><?php echo $size_jpg; ?> KB</p>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="jumbotron">
+						  <div class="jumbotron-photo">
+						  	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.png'); ?>">
+						  </div>
+						  <div class="jumbotron-contents">
+						    <h2>PNG</h2>
+						    <p><?php echo $size_png; ?> KB</p>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="jumbotron">
+						  <div class="jumbotron-photo">
+						  	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.gif'); ?>">
+						  </div>
+						  <div class="jumbotron-contents">
+						    <h2>GIF</h2>
+						    <p><?php echo $size_gif; ?> KB</p>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sm-md-12" style="text-align: center; ">
+						<a href="<?php echo site_url('C_home/viewUploadImage'); ?>" class="btn btn-danger">
+							Upload lagi!
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- <ul>
 		<?php foreach ($upload_data as $item => $value):?>
 		<li><?php echo $item;?>: <?php echo $value;?></li>
 		<?php endforeach; ?>
-	</ul>
-	<h3>Original</h3>
-	<img src="<?php echo base_url('uploads/'.$upload_data['file_name']); ?>">
-	<h3>Compressed</h3>
-	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.jpg'); ?>">
-	<br>
-	<a href="<?php echo site_url('C_home/viewUploadImage'); ?>">Upload lagi!</a>
-</body>
+	</ul> -->
 </html>
