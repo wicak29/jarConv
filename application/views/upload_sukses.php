@@ -16,6 +16,7 @@
 			<div class="example">
 				<div class="row">
 					<h1 style="text-align: center; ">Hasil Konverter</h1>
+					<p style="text-align: center; "><strong>Waktu Eksekusi: </strong><?php echo $exec_time; ?> detik</p>
 					<div class="col-md-3">
 						<div class="jumbotron">
 						  <div class="jumbotron-photo">
@@ -24,6 +25,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>BMP (Original)</h2>
 						    <p><?php echo $upload_data['file_size']; ?> KB</p>
+						    <p><small><?php echo $bmp_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -35,6 +37,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>JPG</h2>
 						    <p><?php echo $size_jpg; ?> KB</p>
+						    <p><small><?php echo $jpg_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -46,6 +49,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>PNG</h2>
 						    <p><?php echo $size_png; ?> KB</p>
+						    <p><small><?php echo $png_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -57,6 +61,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>GIF</h2>
 						    <p><?php echo $size_gif; ?> KB</p>
+						    <p><small><?php echo $gif_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>

@@ -152,6 +152,7 @@ class C_home extends CI_Controller
 
 	public function do_upload()
 	{
+		$start = microtime(true);
 		$config = array(
 			'upload_path' => "./uploads/",
 			'allowed_types' => "bmp",
@@ -178,6 +179,12 @@ class C_home extends CI_Controller
 			$data['size_jpg'] = number_format((float)filesize($jpg_path)/1024, 2, '.', '');
 			$data['size_png'] = number_format((float)filesize($png_path)/1024, 2, '.', '');
 			$data['size_gif'] = number_format((float)filesize($gif_path)/1024, 2, '.', '');
+			$data['exec_time'] = number_format((float)microtime(true) - $start, 2, '.', '');
+
+			$data['bmp_ratio'] = number_format((float)$data['upload_data']['file_size']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
+			$data['jpg_ratio'] = number_format((float)$data['size_jpg']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
+			$data['png_ratio'] = number_format((float)$data['size_png']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
+			$data['gif_ratio'] = number_format((float)$data['size_gif']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
 			// print_r($data);
 			$this->load->view('upload_sukses',$data);
 		}
