@@ -24,8 +24,8 @@
 						  </div>
 						  <div class="jumbotron-contents">
 						    <h2>BMP (Original)</h2>
-						    <p><?php echo $upload_data['file_size']; ?> KB</p>
-						    <p><small><?php echo $bmp_ratio; ?> %</small></p>
+						    <p><?php echo $size_bmp; ?> KB</p>
+						    <p><small><strong>Ratio: </strong> <?php echo $bmp_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>JPG</h2>
 						    <p><?php echo $size_jpg; ?> KB</p>
-						    <p><small><?php echo $jpg_ratio; ?> %</small></p>
+						    <p><small><strong>Ratio: </strong> <?php echo $jpg_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>PNG</h2>
 						    <p><?php echo $size_png; ?> KB</p>
-						    <p><small><?php echo $png_ratio; ?> %</small></p>
+						    <p><small><strong>Ratio: </strong> <?php echo $png_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 						  <div class="jumbotron-contents">
 						    <h2>GIF</h2>
 						    <p><?php echo $size_gif; ?> KB</p>
-						    <p><small><?php echo $gif_ratio; ?> %</small></p>
+						    <p><small><strong>Ratio: </strong> <?php echo $gif_ratio; ?> %</small></p>
 						  </div>
 						</div>
 					</div>

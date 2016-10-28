@@ -155,7 +155,7 @@ class C_home extends CI_Controller
 		$start = microtime(true);
 		$config = array(
 			'upload_path' => "./uploads/",
-			'allowed_types' => "bmp",
+			'allowed_types' => "bmp|jpg",
 			'overwrite' => TRUE,
 			'max_size' => "204800", // Can be set to particular file size , here it is 2 MB(2048 Kb)
 			'max_height' => "2000",
@@ -170,16 +170,20 @@ class C_home extends CI_Controller
 			$jpg_path = "./compressed/compress_".$data['upload_data']['raw_name'].".jpg";
 			$png_path = "./compressed/compress_".$data['upload_data']['raw_name'].".png";
 			$gif_path = "./compressed/compress_".$data['upload_data']['raw_name'].".gif";
+			$wbmp_path = "./compressed/compress_".$data['upload_data']['raw_name'].".wbmp";
 
 			$img = $this->imagecreatefrombmp("./uploads/".$data['upload_data']['file_name']);
-			imagejpeg($img, $jpg_path);
+			// $img = imagecreatefromjpeg("./uploads/".$data['upload_data']['file_name']);
+			imagejpeg($img, $jpg_path, 100);
 			imagepng($img, $png_path);
 			imagegif($img, $gif_path);
+			imagewbmp($img, $wbmp_path);
 
+			$data['size_bmp'] = number_format((float)$data['upload_data']['file_size']/1.024, 2, '.', '');
 			$data['size_jpg'] = number_format((float)filesize($jpg_path)/1024, 2, '.', '');
 			$data['size_png'] = number_format((float)filesize($png_path)/1024, 2, '.', '');
 			$data['size_gif'] = number_format((float)filesize($gif_path)/1024, 2, '.', '');
-			$data['exec_time'] = number_format((float)microtime(true) - $start, 2, '.', '');
+			$data['exec_time'] = number_format((float)microtime(true) - $start, 3, '.', '');
 
 			$data['bmp_ratio'] = number_format((float)$data['upload_data']['file_size']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
 			$data['jpg_ratio'] = number_format((float)$data['size_jpg']/(float)$data['upload_data']['file_size']*100, 2, '.', '');
