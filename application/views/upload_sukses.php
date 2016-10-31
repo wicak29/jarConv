@@ -32,7 +32,7 @@
 					<div class="col-md-3">
 						<div class="jumbotron">
 						  <div class="jumbotron-photo">
-						  	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.jpg'); ?>">
+						  	<img src="<?php echo base_url('compressed/compress_'.$upload_data['raw_name'].'.bmp'); ?>">
 						  </div>
 						  <div class="jumbotron-contents">
 						    <h2>JPG</h2>

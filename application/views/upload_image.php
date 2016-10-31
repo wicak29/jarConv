@@ -19,15 +19,30 @@
 					</div>
 					<div class="col-md-6">
 						<div class="panel panel-default">
-				          <div class="panel-heading">Bitmap to PNG, JPG and GIF</div>
+				          <div class="panel-heading">JPG to PNG, JPG, GIF, BMP, AND TIFF</div>
 				          <div class="panel-body">
 				            <div class="col-sm-12">
 				            	<!-- Aplikasi ini digunakan untuk mengkonversi gambar dari .bmp ke .jpg, .png, dan .gif -->
 					          	<?php echo $error;?> <!-- Error Message will show up here -->
-								<form enctype="multipart/form-data" action="<?php echo site_url('C_home/do_upload');?>" method='POST'>
+								<form enctype="multipart/form-data" action="<?php echo site_url('C_home/do_upload1');?>" method='POST'>
 									<div class="form-group"> 
-										<label>Upload</label>
+										<label>Upload .jpg file: </label>
 										<input type="file" name="userfile" size="20" class="form-control">
+									</div>
+									<div class="form-group"> 
+										<label>Output File: </label>
+										<select class="form-control" name="outType">
+											<option value="png">PNG</option>
+											<option value="gif">GIF</option>
+											<option value="jpg">JPG</option>
+											<option value="bmp">BMP</option>
+											<option value="tiff">TIFF</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Quality: </label>
+										<input type="range" name="quality" min="10" max="90" value="50" id="fader" step="1" oninput="outputUpdate(value)">
+										<output for="fader" id="volume">50</output>
 									</div>
 									<div class="form-group">
 										<button type="submit" name="submit" class="btn btn-primary"><i class="glyphicon glyphicon-cloud-upload"></i> Upload</button>
@@ -44,3 +59,9 @@
 		</div>
 	</body>
 </html>
+
+<script type="text/javascript">
+function outputUpdate(vol) {
+	document.querySelector('#volume').value = vol;
+}
+</script>
